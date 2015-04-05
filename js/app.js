@@ -6,24 +6,24 @@ angular.module('ayush',['ngRoute'])
 
 .config(function($routeProvider){
 	$routeProvider.when('/',{
-		controller:'HomeCtrl',
+		//controller:'HomeCtrl',
 		templateUrl:'templates/about.html'
 	})
 	.when('/skills',{
-		controller:'HomeCtrl',
+		//controller:'HomeCtrl',
 		templateUrl:'templates/skills.html'
 	})
 	.when('/projects',{
-		controller:'HomeCtrl',
-		template:'projects'
+		//controller:'HomeCtrl',
+		templateUrl:'templates/projects.html'
 	})
 })
 
 //controllers
 
-.controller('HomeCtrl',function($scope){
+// .controller('HomeCtrl',function($scope){
 
-})
+// })
 
 //directives
 .directive('header', [function(){
