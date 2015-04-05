@@ -9,6 +9,10 @@ angular.module('ayush',['ngRoute'])
 		controller:'HomeCtrl',
 		templateUrl:'templates/about.html'
 	})
+	.when('/skills',{
+		controller:'HomeCtrl',
+		templateUrl:'templates/skills.html'
+	})
 	.when('/projects',{
 		controller:'HomeCtrl',
 		template:'projects'
