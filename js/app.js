@@ -7,7 +7,7 @@ angular.module('ayush',['ngRoute'])
 .config(function($routeProvider){
 	$routeProvider.when('/',{
 		controller:'HomeCtrl',
-		template:"home"
+		templateUrl:'templates/about.html'
 	})
 	.when('/projects',{
 		controller:'HomeCtrl',
