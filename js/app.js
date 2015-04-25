@@ -1,8 +1,10 @@
 'use strict';
 
+
 angular.module('ayush',['ngRoute'])
 
 //configuring routes
+
 
 .config(function($routeProvider){
 	$routeProvider.when('/',{
@@ -36,6 +38,8 @@ angular.module('ayush',['ngRoute'])
 })
 
 
+
+
 //controllers
 
 .controller('CollapsibleCtrl',function($scope){
@@ -46,8 +50,16 @@ angular.module('ayush',['ngRoute'])
 	});
 })
 
+
 .controller('InstaCtrl',function($scope,$http){
-	$http({method: 'GET', url: 'https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f'}).success(function(data,status, headers, config){
+
+	$http.jsonp('https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f', {
+    params: {
+      callback: 'JSON_CALLBACK',
+      s: 'MSFT GE',
+      f: 'nab'
+    }
+  }).success(function(data,status, headers, config){
 			$scope.method = {};
 			$scope.method.instagram = data;
 		}).error(function(data){
