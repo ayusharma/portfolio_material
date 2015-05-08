@@ -53,6 +53,8 @@ angular.module('ayush',['ngRoute'])
 
 .controller('InstaCtrl',function($scope,$http){
 
+	
+
 	$http.jsonp('https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f', {
     params: {
       callback: 'JSON_CALLBACK',
@@ -60,8 +62,12 @@ angular.module('ayush',['ngRoute'])
       f: 'nab'
     }
   }).success(function(data,status, headers, config){
+
 			$scope.method = {};
-			$scope.method.instagram = data;
+			$scope.method.instagram = data.data;
+			$(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
 		}).error(function(data){
 			
 		});
