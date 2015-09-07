@@ -23,6 +23,11 @@ angular.module('ayush',['ngRoute'])
 		//controller:'HomeCtrl',
 		templateUrl:'templates/projects.html'
 	})
+	//For prohect details
+	.when('/projects/spiffout',{
+		controller:'SpiffoutCtrl',
+		templateUrl:'templates/projects/spiffout.html'
+	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
 		templateUrl:'templates/resume.html'
@@ -41,7 +46,9 @@ angular.module('ayush',['ngRoute'])
 
 
 //controllers
-
+.controller('SpiffoutCtrl',function(){
+	$('.materialboxed').materialbox();
+})
 .controller('CollapsibleCtrl',function($scope){
 	$(document).ready(function(){
 		$('.collapsible').collapsible({
@@ -52,8 +59,6 @@ angular.module('ayush',['ngRoute'])
 
 
 .controller('InstaCtrl',function($scope,$http){
-
-	
 
 	$http.jsonp('https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f', {
     params: {
@@ -88,4 +93,10 @@ angular.module('ayush',['ngRoute'])
 		templateUrl: 'templates/directive/footer.html'
 	}
 	return directive;
-}]);
+}])
+
+.run(function() {
+	
+   
+
+})
