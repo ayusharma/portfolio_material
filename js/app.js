@@ -28,6 +28,50 @@ angular.module('ayush',['ngRoute'])
 		controller:'SpiffoutCtrl',
 		templateUrl:'templates/projects/spiffout.html'
 	})
+	.when('/projects/inloop',{
+		controller:'InloopCtrl',
+		templateUrl:'templates/projects/inloop.html'
+	})
+	.when('/projects/dailyrounds',{
+		controller:'DailyroundsCtrl',
+		templateUrl:'templates/projects/dailyrounds.html'
+	})
+	.when('/projects/pediatric',{
+		controller:'PediatricCtrl',
+		templateUrl:'templates/projects/pediatriconco.html'
+	})
+	.when('/projects/openeyecad',{
+		controller:'OpeneyecadCtrl',
+		templateUrl:'templates/projects/openeyecad.html'
+	})
+	.when('/projects/canceranalysis',{
+		controller:'CancerAnalysisCtrl',
+		templateUrl:'templates/projects/canceranalysis.html'
+	})
+	.when('/projects/openhealth',{
+		controller:'OpenhealthCtrl',
+		templateUrl:'templates/projects/openhealth.html'
+	})
+	.when('/projects/wordmatch',{
+		controller:'WordmatchCtrl',
+		templateUrl:'templates/projects/Wordmatch.html'
+	})
+	.when('/projects/bloodcollective',{
+		controller:'BloodcollectiveCtrl',
+		templateUrl:'templates/projects/bloodcollective.html'
+	})
+	.when('/projects/birthday',{
+		controller:'BirthdayCtrl',
+		templateUrl:'templates/projects/birthday.html'
+	})
+	.when('/projects/kiwi',{
+		controller:'KiwiCtrl',
+		templateUrl:'templates/projects/kiwi.html'
+	})
+	.when('/projects/ayusharma',{
+		controller:'AyusharmaCtrl',
+		templateUrl:'templates/projects/ayusharma.html'
+	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
 		templateUrl:'templates/resume.html'
@@ -48,7 +92,49 @@ angular.module('ayush',['ngRoute'])
 //controllers
 .controller('SpiffoutCtrl',function(){
 	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
 })
+.controller('InloopCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('DailyroundsCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('PediatricCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('OpeneyecadCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('CancerAnalysisCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('OpenhealthCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('WordmatchCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('BirthdayCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('KiwiCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('AyusharmaCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+
 .controller('CollapsibleCtrl',function($scope){
 	$(document).ready(function(){
 		$('.collapsible').collapsible({
