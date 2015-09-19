@@ -72,6 +72,26 @@ angular.module('ayush',['ngRoute'])
 		controller:'AyusharmaCtrl',
 		templateUrl:'templates/projects/ayusharma.html'
 	})
+	.when('/projects/firstapi',{
+		controller:'FirstapiCtrl',
+		templateUrl:'templates/projects/firstapi.html'
+	})
+	.when('/projects/india',{
+		controller:'IndiaCtrl',
+		templateUrl:'templates/projects/india.html'
+	})
+	.when('/projects/medicalassist',{
+		controller:'MedicalassistCtrl',
+		templateUrl:'templates/projects/medicalassit.html'
+	})
+	.when('/projects/pixelcount',{
+		controller:'PixelcountCtrl',
+		templateUrl:'templates/projects/pixelcount.html'
+	})
+	.when('/projects/rajlive',{
+		controller:'RajliveCtrl',
+		templateUrl:'templates/projects/rajlive.html'
+	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
 		templateUrl:'templates/resume.html'
@@ -131,6 +151,26 @@ angular.module('ayush',['ngRoute'])
 	$('.tooltipped').tooltip({delay: 50});
 })
 .controller('AyusharmaCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('FirstapiCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('IndiaCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('MedicalassistCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('PixelcountCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('RajliveCtrl',function(){
 	$('.materialboxed').materialbox();
 	$('.tooltipped').tooltip({delay: 50});
 })
