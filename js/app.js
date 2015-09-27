@@ -177,9 +177,11 @@ angular.module('ayush',['ngRoute'])
 
 .controller('CollapsibleCtrl',function($scope){
 	$(document).ready(function(){
-		$('.collapsible').collapsible({
-      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-  });
+	$('.collapsible').collapsible({
+  		accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+		});
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
 	});
 })
 
