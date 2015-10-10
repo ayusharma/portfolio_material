@@ -92,6 +92,14 @@ angular.module('ayush',['ngRoute'])
 		controller:'RajliveCtrl',
 		templateUrl:'templates/projects/rajlive.html'
 	})
+	.when('/projects/firefoxos',{
+		controller:'FirefoxOSCtrl',
+		templateUrl:'templates/projects/firefoxos.html'
+	})
+	.when('/projects/igniters',{
+		controller:'IgnitersCtrl',
+		templateUrl:'templates/projects/igniters.html'
+	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
 		templateUrl:'templates/resume.html'
@@ -174,12 +182,20 @@ angular.module('ayush',['ngRoute'])
 	$('.materialboxed').materialbox();
 	$('.tooltipped').tooltip({delay: 50});
 })
+.controller('FirefoxOSCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('IgnitersCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
 
 .controller('CollapsibleCtrl',function($scope){
 	$(document).ready(function(){
 	$('.collapsible').collapsible({
   		accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-		});
+	});
 	$('.materialboxed').materialbox();
 	$('.tooltipped').tooltip({delay: 50});
 	});
