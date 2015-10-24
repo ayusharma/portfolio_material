@@ -100,6 +100,14 @@ angular.module('ayush',['ngRoute'])
 		controller:'IgnitersCtrl',
 		templateUrl:'templates/projects/igniters.html'
 	})
+	.when('/projects/dreambox',{
+		controller:'DreamBoxCtrl',
+		templateUrl:'templates/projects/dreambox.html'
+	})
+	.when('/projects/keyboard',{
+		controller:'KeyBoardCtrl',
+		templateUrl:'templates/projects/keyboard.html'
+	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
 		templateUrl:'templates/resume.html'
@@ -187,6 +195,14 @@ angular.module('ayush',['ngRoute'])
 	$('.tooltipped').tooltip({delay: 50});
 })
 .controller('IgnitersCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('DreamBoxCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('KeyBoardCtrl',function(){
 	$('.materialboxed').materialbox();
 	$('.tooltipped').tooltip({delay: 50});
 })
