@@ -206,6 +206,10 @@ angular.module('ayush',['ngRoute'])
 	$('.materialboxed').materialbox();
 	$('.tooltipped').tooltip({delay: 50});
 })
+.controller('BloodcollectiveCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
 
 .controller('CollapsibleCtrl',function($scope){
 	$(document).ready(function(){
@@ -231,8 +235,8 @@ angular.module('ayush',['ngRoute'])
 			$scope.method = {};
 			$scope.method.instagram = data.data;
 			$(document).ready(function(){
-      $('.slider').slider({full_width: true});
-    });
+			      $('.slider').slider({full_width: true});
+			    });
 		}).error(function(data){
 			
 		});

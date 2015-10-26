@@ -5,24 +5,18 @@
 				<p data-ng-model="method">{{ method.instagram[0].images.standard_resolution.url }}</p>
 
 				<b data-ng-repeat="x in method.instagram">{{ x.images.standard_resolution.url }}</b>
-				<div class="slider">
+				<img data-ng-repeat="x in method.instagram" ng-src="{{ x.images.standard_resolution.url }}" width="200" height="200"> 
+				<!-- <div class="slider">
 					<ul class="slides">
 						<li data-ng-repeat="x in method.instagram">
-							<img ng-src="{{ x.images.standard_resolution.url }}"> 	
+							<img data-ng-repeat="x in method.instagram" ng-src="{{ x.images.standard_resolution.url }}" width="200" height="200"> 
 							<div class="caption center-align">
 								<h3>This is our big Tagline!</h3>
 								<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
 							</div>
 						</li>
-						<!-- <li>
-							<img src="http://lorempixel.com/580/250/nature/1"> 
-							<div class="caption center-align">
-								<h3>This is our big Tagline!</h3>
-								<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-							</div>
-						</li> -->
 					</ul>
-				</div> 
+				</div>  -->
 			</div>
 		</div>
 	</div>
