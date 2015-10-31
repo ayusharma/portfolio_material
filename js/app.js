@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('ayush',['ngRoute'])
+angular.module('ayush',['ngRoute','wu.masonry'])
 
 //configuring routes
 
@@ -224,6 +224,37 @@ angular.module('ayush',['ngRoute'])
 
 .controller('InstaCtrl',function($scope,$http){
 
+	$scope.method = {};
+	//$(window).load(function(){
+
+
+function genBrick() {
+    var height = ~~(Math.random() * 500) + 100;
+    var id = ~~(Math.random() * 10000);
+    return {
+        src: 'http://lorempixel.com/g/280/' + height + '/?' + id
+    };
+};
+
+$scope.bricks = [
+    genBrick(),
+    genBrick(),
+    genBrick(),
+    genBrick(),
+    genBrick()
+];
+
+$scope.add = function add() {
+    $scope.bricks.push(genBrick());
+};
+
+$scope.remove = function remove() {
+    $scope.bricks.splice(
+        ~~(Math.random() * $scope.bricks.length),
+        1
+    )
+};
+
 	$http.jsonp('https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f', {
     params: {
       callback: 'JSON_CALLBACK',
@@ -231,15 +262,27 @@ angular.module('ayush',['ngRoute'])
       f: 'nab'
     }
   }).success(function(data,status, headers, config){
+		
+		$scope.method.instagram = data.data;
+	}).error(function(data){
+		
+	});
 
-			$scope.method = {};
-			$scope.method.instagram = data.data;
-			$(document).ready(function(){
-			      $('.slider').slider({full_width: true});
-			    });
-		}).error(function(data){
-			
-		});
+
+	$http.jsonp('https://graph.facebook.com/930291210369402/photos/uploaded?fields=images&access_token=CAANGK6t6KWEBAFDKqIVZC1CzdB8qv66ufYB3F6hBdHBFCDZBxDSaKCGzy88vtQsj6K1a3rUNiuPcEj8QbJd3JMK3mMZB68ZBa3qvBx8FusKV8clnPr6F73814lZCTS2ZCUa6MEUPlHWMoTyyI0W9Fx4BfB9psiRZANZAoZAyLDA68rRhY3cyBTDBK6OzvChWeZBT0ZD', {
+    params: {
+      callback: 'JSON_CALLBACK',
+      s: 'MSFT GE',
+      f: 'nab'
+    }
+ 	}).success(function(data,status, headers, config){
+ 		$scope.method.fb = data.data;
+  		console.log(data);
+	}).error(function(data){
+		
+	});
+
+
 })
 
 //directives
@@ -255,6 +298,33 @@ angular.module('ayush',['ngRoute'])
 	var directive = {
 		restrict: 'EA',
 		templateUrl: 'templates/directive/footer.html'
+	}
+	return directive;
+}])
+
+.directive('loading', ['$http',function($http){
+	var directive = {
+		restrict: 'EA',
+		templateUrl: 'templates/directive/loading.html',
+		link: function (scope, elm, attrs)
+            {
+
+            	console.log($http);
+
+                scope.isLoading = function () {
+                    return $http.pendingRequests.length;
+                };
+
+                scope.$watch(scope.isLoading, function (v)
+                {
+                	console.log(v);
+                    if(v){
+                        elm.show();
+                    }else{
+                        elm.hide();
+                    }
+                });
+            }
 	}
 	return directive;
 }])

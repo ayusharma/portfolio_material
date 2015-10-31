@@ -1,23 +1,15 @@
 <div class="col s12 m8 offset-m2 l6 offset-l3">
 	<div class="card-panel white z-depth-1">
-		<div class="row">
-			<div class="col l12 m12 s12" data-ng-controller="InstaCtrl">
-				<p data-ng-model="method">{{ method.instagram[0].images.standard_resolution.url }}</p>
+		<div class="row" data-ng-controller="InstaCtrl">
+			<div masonry class="center-align">
+				<div class="masonry-brick" ng-repeat="x in method.instagram" style="width:25%">
+                    <img ng-src="{{ x.images.standard_resolution.url }}" style="width:98%; padding:1%;">
+                </div>
+                <div class="masonry-brick" ng-repeat="y in method.fb" style="width:25%">
+                    <img ng-src="{{ y.images[0].source }}" style="width:98%; padding:1%;">
+                </div>
 
-				<b data-ng-repeat="x in method.instagram">{{ x.images.standard_resolution.url }}</b>
-				<img data-ng-repeat="x in method.instagram" ng-src="{{ x.images.standard_resolution.url }}" width="200" height="200"> 
-				<!-- <div class="slider">
-					<ul class="slides">
-						<li data-ng-repeat="x in method.instagram">
-							<img data-ng-repeat="x in method.instagram" ng-src="{{ x.images.standard_resolution.url }}" width="200" height="200"> 
-							<div class="caption center-align">
-								<h3>This is our big Tagline!</h3>
-								<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-							</div>
-						</li>
-					</ul>
-				</div>  -->
-			</div>
+            </div>       
 		</div>
 	</div>
 </div>
