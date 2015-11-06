@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('ayush',['ngRoute','wu.masonry'])
+angular.module('ayush',['ngRoute','ngSanitize','wu.masonry'])
 
 //configuring routes
 
@@ -225,35 +225,10 @@ angular.module('ayush',['ngRoute','wu.masonry'])
 .controller('InstaCtrl',function($scope,$http){
 
 	$scope.method = {};
-	//$(window).load(function(){
-
-
-function genBrick() {
-    var height = ~~(Math.random() * 500) + 100;
-    var id = ~~(Math.random() * 10000);
-    return {
-        src: 'http://lorempixel.com/g/280/' + height + '/?' + id
-    };
-};
-
-$scope.bricks = [
-    genBrick(),
-    genBrick(),
-    genBrick(),
-    genBrick(),
-    genBrick()
-];
-
-$scope.add = function add() {
-    $scope.bricks.push(genBrick());
-};
-
-$scope.remove = function remove() {
-    $scope.bricks.splice(
-        ~~(Math.random() * $scope.bricks.length),
-        1
-    )
-};
+	
+	
+    $('.materialboxed').materialbox();
+ 
 
 	$http.jsonp('https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f', {
     params: {
@@ -285,6 +260,21 @@ $scope.remove = function remove() {
 
 })
 
+.controller('BloggerCtrl',function($scope,$http){
+	$scope.method = {};
+
+	var req = {
+      method: 'GET',
+      url: 'https://www.googleapis.com/blogger/v3/blogs/410443138095270845/posts?key=AIzaSyAatG2VWY3lg9NFOaOK7fYqjYhNamWg6JQ'
+    };
+    $http(req).success(function(res) {
+      $scope.method.blogposts = res.items;
+      console.log(res);
+    }).error(function(res){
+    	console.log(res)
+    })
+})
+
 //directives
 .directive('header', [function(){
 	var directive = {
@@ -309,15 +299,13 @@ $scope.remove = function remove() {
 		link: function (scope, elm, attrs)
             {
 
-            	console.log($http);
-
                 scope.isLoading = function () {
                     return $http.pendingRequests.length;
                 };
 
                 scope.$watch(scope.isLoading, function (v)
                 {
-                	console.log(v);
+                	//console.log(v);
                     if(v){
                         elm.show();
                     }else{
