@@ -23,6 +23,10 @@ angular.module('ayush',['ngRoute','ngSanitize','wu.masonry'])
 		//controller:'HomeCtrl',
 		templateUrl:'templates/projects.html'
 	})
+	.when('/blog',{
+		controller:'BloggerCtrl',
+		templateUrl:'templates/blog.html'
+	})
 	//For prohect details
 	.when('/projects/spiffout',{
 		controller:'SpiffoutCtrl',
@@ -239,23 +243,26 @@ angular.module('ayush',['ngRoute','ngSanitize','wu.masonry'])
   }).success(function(data,status, headers, config){
 		
 		$scope.method.instagram = data.data;
+
+		console.log(data);
+		
 	}).error(function(data){
 		
 	});
 
 
-	$http.jsonp('https://graph.facebook.com/930291210369402/photos/uploaded?fields=images&access_token=CAANGK6t6KWEBAFDKqIVZC1CzdB8qv66ufYB3F6hBdHBFCDZBxDSaKCGzy88vtQsj6K1a3rUNiuPcEj8QbJd3JMK3mMZB68ZBa3qvBx8FusKV8clnPr6F73814lZCTS2ZCUa6MEUPlHWMoTyyI0W9Fx4BfB9psiRZANZAoZAyLDA68rRhY3cyBTDBK6OzvChWeZBT0ZD', {
-    params: {
-      callback: 'JSON_CALLBACK',
-      s: 'MSFT GE',
-      f: 'nab'
-    }
- 	}).success(function(data,status, headers, config){
- 		$scope.method.fb = data.data;
-  		console.log(data);
-	}).error(function(data){
+	// $http.jsonp('https://graph.facebook.com/930291210369402/photos/uploaded?fields=images&access_token=CAANGK6t6KWEBAFDKqIVZC1CzdB8qv66ufYB3F6hBdHBFCDZBxDSaKCGzy88vtQsj6K1a3rUNiuPcEj8QbJd3JMK3mMZB68ZBa3qvBx8FusKV8clnPr6F73814lZCTS2ZCUa6MEUPlHWMoTyyI0W9Fx4BfB9psiRZANZAoZAyLDA68rRhY3cyBTDBK6OzvChWeZBT0ZD', {
+ //    params: {
+ //      callback: 'JSON_CALLBACK',
+ //      s: 'MSFT GE',
+ //      f: 'nab'
+ //    }
+ // 	}).success(function(data,status, headers, config){
+ // 		$scope.method.fb = data.data;
+ //  		console.log(data);
+	// }).error(function(data){
 		
-	});
+	// });
 
 
 })
@@ -279,7 +286,13 @@ angular.module('ayush',['ngRoute','ngSanitize','wu.masonry'])
 .directive('header', [function(){
 	var directive = {
 		restrict: 'EA',
-		templateUrl: 'templates/directive/header.html'
+		templateUrl: 'templates/directive/header.html',
+		controller:['$scope',function($scope){
+			console.log('jkjbj ');
+			$scope.slideIt = function(){
+				$( ".links-mobile" ).slideToggle( "slow" );
+			}
+		}]
 	}
 	return directive;
 }])
@@ -288,6 +301,14 @@ angular.module('ayush',['ngRoute','ngSanitize','wu.masonry'])
 	var directive = {
 		restrict: 'EA',
 		templateUrl: 'templates/directive/footer.html'
+	}
+	return directive;
+}])
+
+.directive('links', [function(){
+	var directive = {
+		restrict: 'EA',
+		templateUrl: 'templates/directive/links.html'
 	}
 	return directive;
 }])
