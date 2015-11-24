@@ -1,7 +1,7 @@
 'use strict';
 
 
-angular.module('ayush',['ngRoute','ngSanitize','wu.masonry'])
+angular.module('ayush',['ngRoute','ngSanitize'])
 
 //configuring routes
 
