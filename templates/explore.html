@@ -5,63 +5,23 @@
 		<p class="flow-text" style="font-size:18px;">
 			I have an interest in photography and keep the best shots on Instagram.
 		</p>
-
-		<!-- <div class="row" data-ng-controller="BloggerCtrl" >
-		    <div class="row" ng-repeat="p in method.blogposts">
-		      <div class="col s12 m5">
-		        <div class="card-panel teal">
-		          <span class="white-text" ng-bind-html="p.content">{{ p.content}}
-		          </span>
-		        </div>
-		      </div>
-		    </div>
-		</div> -->
-
 		<div class="row" data-ng-controller="InstaCtrl">
-			<!-- <div masonry class="center-align"> -->
-				<!-- <div class="masonry-brick" ng-repeat="x in method.instagram" style="width:100%"> -->
-                    <!-- <img class="materialboxed hoverable" ng-src="{{ x.images.standard_resolution.url }}" style="width:98%; padding:1%;"> -->
-                    <!-- <div class="row"> -->
-			        <div class="col s12 m3" ng-repeat="x in method.instagram">
-			        	<a href="{{ x.link }}" target="_blank">
-			          <div class="card hoverable">
-			            <div class="card-image">
-			              <img class="" ng-src="{{ x.images.standard_resolution.url }}">
-			              <!-- <span class="card-title"> {{ x.location.name }}</span> -->
-			            </div>
-			            <div class="card-content">
-			              <p class="truncate"> {{ x.caption.text}}</p>
-			            </div>
-			            <!-- <div class="card-action">
-			              <a href="#">This is a link</a>
-			            </div> -->
-			          </div>
-			          </a>
-			        </div>
-			      <!-- </div> -->
-                <!-- </div> -->
-                <!-- <div class="masonry-brick"  style="width:100%"> -->
-                    <!-- <img class="materialboxed hoverable" ng-src="{{ y.images[0].source }}" style="width:98%; padding:1%;"> -->
-                    <!-- <div class="row"> -->
-			       <!--  <div class="col s12 m3" ng-repeat="y in method.fb">
-			          <div class="card">
-			            <div class="card-image">
-			              <img class="materialboxed hoverable" ng-src="{{ y.images[0].source }}">
-			              <span class="card-title">Card Title</span>
-			            </div>
-			            <div class="card-content">
-			              <p>I am a very simple card. I am good at containing small bits of information.
-			              I am convenient because I require little markup to use effectively.</p>
-			            </div>
-			            <div class="card-action">
-			              <a href="#">This is a link</a>
-			            </div>
-			          </div>
-			        </div> -->
-			      <!-- </div> -->
-                <!-- </div> -->
-
-            <!-- </div>        -->
+	        <div class="col s12 m3" ng-repeat="x in method.instagram">
+	        	<a href="{{ x.link }}" target="_blank" ng-if="x.tags.indexOf('family') < 0 ">
+	          <div class="card hoverable">
+	            <div class="card-image">
+	              <img class="" ng-src="{{ x.images.standard_resolution.url }}">
+	              <span class="card-title"> {{ x.tags }}</span>
+	            </div>
+	            <div class="card-content">
+	              <p class="truncate"> {{ x.caption.text}}</p>
+	            </div>
+	            <!-- <div class="card-action">
+	              <a href="#">This is a link</a>
+	            </div> -->
+	          </div>
+	          </a>
+	        </div>
 		</div>
 	</div>
 </div>
