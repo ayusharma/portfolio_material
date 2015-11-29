@@ -247,7 +247,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		console.log(data);
 		
 	}).error(function(data){
-		
+		console.log(data);
 	});
 
 
