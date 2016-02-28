@@ -295,7 +295,6 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		restrict: 'EA',
 		templateUrl: 'templates/directive/header.html',
 		controller:['$scope',function($scope){
-			console.log('jkjbj ');
 			$scope.slideIt = function(){
 				$( ".links-mobile" ).slideToggle( "slow" );
 			}
@@ -352,21 +351,49 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	$http.defaults.headers.common.Authorization = 'Basic YXl1c2hhcm1hOjJjZmIwMzFkNDljMmM0MjY1MjEwZGI4Y2YyNjkwOWY4MjUwOWRhY2I=';
 	var req = {
       method: 'GET',
-      url: 'https://api.github.com/user/repos?per_page=200',
+      url: 'https://api.github.com/user/repos?per_page=200&affiliation=owner',
     };
 
 		$http(req).success(function(res) {
-      console.log(res);
+		      console.log(res);
 
-			$rootScope.rootmethod.reposcount = res.length;
-			$rootScope.rootmethod.commitscount = 0
+					$rootScope.rootmethod.reposcount = res.length;
+					$rootScope.rootmethod.commitscount = 0
+					$rootScope.rootmethod.langset = []
 
-			for (var i=0 ; i< res.length; i++){
-					$http.get('https://api.github.com/repos/'+res[i].full_name+'/commits?per_page=999&author=ayusharma').then(function(data){
-						console.log(data);
-							$rootScope.rootmethod.commitscount = 	$rootScope.rootmethod.commitscount+ data.data.length;
-					});
-			}
+					_.forEach(res,function(r){
+						$http.get('https://api.github.com/repos/'+r.full_name+'/commits?per_page=999&author=ayusharma').then(function(data){
+									$rootScope.rootmethod.commitscount = 	$rootScope.rootmethod.commitscount+ data.data.length;
+						});
+					})
+
+
+					_.forEach(res,function(r){
+						if (r.language != null){
+							$rootScope.rootmethod.langset.push(r.language);
+							$rootScope.rootmethod.langset = _.uniq($rootScope.rootmethod.langset, function(a) { sreturn a;});
+						}
+					})
+
+
+					// function customizer(objValue, srcValue) {
+					//   if (_.isArray(objValue)) {
+					//     return objValue.concat(srcValue);
+					// 	  }
+					// }
+					//
+					// $rootScope.rootmethod.langs = {};
+					// $rootScope.rootmethod.total = 0;
+					//
+					// _.forEach(res,function(r,i){
+					// 	$http.get(r.languages_url+'?per_page=999&author=ayusharma').then(function(data){
+					//
+					// 		_.mergeWith($rootScope.rootmethod.langs, data.data, customizer);
+					// 		$rootScope.rootmethod.total =	_.sum(_.values($rootScope.rootmethod.langs));
+					//
+					// 	});
+					//
+					// });
 
     }).error(function(res){
     	console.log(res)
