@@ -351,7 +351,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	$http.defaults.headers.common.Authorization = 'Basic YXl1c2hhcm1hOjJjZmIwMzFkNDljMmM0MjY1MjEwZGI4Y2YyNjkwOWY4MjUwOWRhY2I=';
 	var req = {
       method: 'GET',
-      url: 'https://api.github.com/user/repos?per_page=200&affiliation=owner',
+      url: 'https://api.github.com/user/repos?per_page=200',
     };
 
 		$http(req).success(function(res) {
@@ -400,11 +400,15 @@ angular.module('ayush',['ngRoute','ngSanitize'])
     })
 
 
-		//contribution tables
+		//Kinto contribution tables
 
-		// var repos = [
-		// 	'https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all'
-		// ]
+		$http.get('https://api.github.com/repos/kinto/kinto/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.kintocommits = 	data.data.length;
+		});
+
+		$http.get('https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.kintoissues = 	data.data.length;
+		});
 
 
 })
