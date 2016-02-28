@@ -362,7 +362,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 			$rootScope.rootmethod.commitscount = 0
 
 			for (var i=0 ; i< res.length; i++){
-					$http.get('https://api.github.com/repos/'+res[i].full_name+'/commits').then(function(data){
+					$http.get('https://api.github.com/repos/'+res[i].full_name+'/commits?per_page=999&author=ayusharma').then(function(data){
 						console.log(data);
 							$rootScope.rootmethod.commitscount = 	$rootScope.rootmethod.commitscount+ data.data.length;
 					});
