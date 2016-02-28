@@ -124,6 +124,10 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		// controller:'HomeCtrl',
 		templateUrl:'templates/contact.html'
 	})
+	.when('/contribution',{
+		controller:'ContributionCtrl',
+		templateUrl:'templates/osc.html'
+	})
 })
 
 
@@ -229,10 +233,10 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 .controller('InstaCtrl',function($scope,$http){
 
 	$scope.method = {};
-	
-	
+
+
     $('.materialboxed').materialbox();
- 
+
 
 	$http.jsonp('https://api.instagram.com/v1/users/1393385187/media/recent/?access_token=1393385187.1677ed0.6d9d9f6f1d6b4b59ab11526943cf1b9f', {
     params: {
@@ -241,11 +245,11 @@ angular.module('ayush',['ngRoute','ngSanitize'])
       f: 'nab'
     }
   }).success(function(data,status, headers, config){
-		
+
 		$scope.method.instagram = data.data;
 
 		console.log(data);
-		
+
 	}).error(function(data){
 		console.log(data);
 	});
@@ -261,7 +265,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
  // 		$scope.method.fb = data.data;
  //  		console.log(data);
 	// }).error(function(data){
-		
+
 	// });
 
 
@@ -280,6 +284,9 @@ angular.module('ayush',['ngRoute','ngSanitize'])
     }).error(function(res){
     	console.log(res)
     })
+})
+.controller('ContributionCtrl',function($rootScope){
+
 })
 
 //directives
@@ -338,8 +345,32 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	return directive;
 }])
 
-.run(function() {
-	
-   
+.run(function($rootScope,$http) {
+	$rootScope.rootmethod = {};
+
+	//Github Authorization
+	$http.defaults.headers.common.Authorization = 'Basic YXl1c2hhcm1hOjJjZmIwMzFkNDljMmM0MjY1MjEwZGI4Y2YyNjkwOWY4MjUwOWRhY2I=';
+	var req = {
+      method: 'GET',
+      url: 'https://api.github.com/user/repos?per_page=200',
+    };
+
+		$http(req).success(function(res) {
+      console.log(res);
+
+			$rootScope.rootmethod.reposcount = res.length;
+			$rootScope.rootmethod.commitscount = 0
+
+			for (var i=0 ; i< res.length; i++){
+					$http.get('https://api.github.com/repos/'+res[i].full_name+'/commits').then(function(data){
+						console.log(data);
+							$rootScope.rootmethod.commitscount = 	$rootScope.rootmethod.commitscount+ data.data.length;
+					});
+			}
+
+    }).error(function(res){
+    	console.log(res)
+    })
+
 
 })
