@@ -371,7 +371,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 					_.forEach(res,function(r){
 						if (r.language != null){
 							$rootScope.rootmethod.langset.push(r.language);
-							$rootScope.rootmethod.langset = _.uniq($rootScope.rootmethod.langset, function(a) { sreturn a;});
+							$rootScope.rootmethod.langset = _.uniq($rootScope.rootmethod.langset, function(a) { return a;});
 						}
 					})
 
@@ -398,6 +398,13 @@ angular.module('ayush',['ngRoute','ngSanitize'])
     }).error(function(res){
     	console.log(res)
     })
+
+
+		//contribution tables
+
+		// var repos = [
+		// 	'https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all'
+		// ]
 
 
 })

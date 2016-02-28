@@ -1,27 +1,68 @@
-<div class="row">
-  <div class="col s12 m2">
-    <div class="card blue-grey darken-2">
-      <div class="card-content white-text">
-        <span class="card-title" style="font-size:56px" ng-model="rootmethod">{{ rootmethod.reposcount }}</span>
-        <!-- <p>Github Repos</p> -->
-      </div>
-      <div class="card-action">
-        <a href="#" style="color:#fff;">Repos</a>
-      </div>
-    </div>
-  </div>
+<div class="col s12 m8 offset-m2 l6 offset-l3">
+	<div class="card-panel white z-depth-1">
+		<h5> <i class="small material-icons" style="vertical-align:text-top;">label_outline</i> Github</h5>
+		<hr>
+		<br><h5>Overview</h5><br>
+		<div class="row">
+			<div class="col s12 m2">
+				<div class="card blue-grey darken-2">
+					<div class="card-content white-text">
+						<span class="card-title" style="font-size:56px" ng-model="rootmethod">{{ rootmethod.reposcount }}</span>
+					</div>
+					<div class="card-action">
+						<a href="#" style="color:#fff;">Repos</a>
+					</div>
+				</div>
+			</div>
 
-	<div class="col s12 m2">
-    <div class="card blue-grey darken-2">
-      <div class="card-content white-text">
-        <span class="card-title" style="font-size:56px" ng-model="rootmethod">{{ rootmethod.commitscount }}</span>
-        <!-- <p>Github Repos</p> -->
-      </div>
-      <div class="card-action">
-        <a href="#" style="color:#fff;">Commits</a>
-      </div>
-    </div>
-  </div>
+			<div class="col s12 m2">
+				<div class="card blue-grey darken-2">
+					<div class="card-content white-text">
+						<span class="card-title" style="font-size:56px" ng-model="rootmethod">{{ rootmethod.commitscount }}</span>
+					</div>
+					<div class="card-action">
+						<a href="#" style="color:#fff;">Commits</a>
+					</div>
+				</div>
+			</div>
+	</div>
+	<br><h5>Languages</h5><br>
+	<div class="row">
+		<div class="col s12 m12">
+			<div class="chip margin-right-1x margin-top-2x" ng-repeat = "x in rootmethod.langset track by $index">
+
+		    {{x}}
+		  </div>
+		</div>
+	</div>
+
+	<br><h5>Prime Contribution</h5><br>
+	<div class="row">
+		<div class="col s12 m12">
+			<ul class="collection with-header">
+         <li class="collection-header"><h4>Mozilla Kinto</h4></li>
+         <li class="collection-item"><a href="https://github.com/Kinto/kinto/pull/461">Issue 461 Kinto creates blank record on Content-Type:text/plain</a> <span class="badge">Bug</span></li>
+         <li class="collection-item"><a href="https://github.com/Kinto/kinto/issues/434">Issue 434 Default order of records is not -last_modified</a> <span class="badge">Bug</span> </li>
+         <li class="collection-item"><a href="https://github.com/Kinto/kinto/issues/446">Issue 446Redirect from `__heartbeat__` should be more than just directory path</a> <span class="badge">Bug</span> </li>
+       </ul>
+
+		</div>
+	</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 <!--
 	<div class="col s12 m2">
     <div class="card blue-grey darken-2">
@@ -46,12 +87,4 @@
 			</div>
 		</div>
 	</div> -->
-</div>
-<div class="row">
-	<div class="col s12 m12">
-		<div class="chip margin-right-1x margin-top-2x" ng-repeat = "x in rootmethod.langset track by $index">
-
-	    {{x}}
-	  </div>
-	</div>
 </div>
