@@ -1,0 +1,33 @@
+{
+  "name": "portfilio_material",
+  "version": "1.0.0",
+  "description": "http://ayusharma.in",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ayusharma/portfilio_material.git"
+  },
+  "keywords": [
+    "portfolio",
+    "ayusharma",
+    "ayushsharma",
+    "ayush"
+  ],
+  "author": "Ayush Sharma",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ayusharma/portfilio_material/issues"
+  },
+  "homepage": "https://github.com/ayusharma/portfilio_material#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-browserify": "^0.5.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^3.0.0",
+    "gulp-webserver": "^0.9.1"
+  }
+}
