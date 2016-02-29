@@ -248,7 +248,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 
 		$scope.method.instagram = data.data;
 
-		console.log(data);
+		// console.log(data);
 
 	}).error(function(data){
 		console.log(data);
@@ -280,7 +280,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
     };
     $http(req).success(function(res) {
       $scope.method.blogposts = res.items;
-      console.log(res);
+      // console.log(res);
     }).error(function(res){
     	console.log(res)
     })
@@ -360,7 +360,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
     };
 
 		$http(req).success(function(res) {
-		      console.log(res);
+		      // console.log(res);
 
 					$rootScope.rootmethod.reposcount = res.length;
 					$rootScope.rootmethod.commitscount = 0
@@ -382,7 +382,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 					})
 
 					$http.get('https://api.github.com/user/followers?per_page=200').then(function(data){
-						console.log(data.data.length);
+						// console.log(data.data.length);
 					$rootScope.rootmethod.follow = data.data.length;
 					});
 
