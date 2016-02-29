@@ -347,8 +347,13 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 .run(function($rootScope,$http) {
 	$rootScope.rootmethod = {};
 
+
 	//Github Authorization
 	$http.defaults.headers.common.Authorization = 'Basic YXl1c2hhcm1hOjJjZmIwMzFkNDljMmM0MjY1MjEwZGI4Y2YyNjkwOWY4MjUwOWRhY2I=';
+
+
+
+
 	var req = {
       method: 'GET',
       url: 'https://api.github.com/user/repos?per_page=200',
@@ -360,6 +365,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 					$rootScope.rootmethod.reposcount = res.length;
 					$rootScope.rootmethod.commitscount = 0
 					$rootScope.rootmethod.langset = []
+					$rootScope.rootmethod.follow = 0
 
 					_.forEach(res,function(r){
 						$http.get('https://api.github.com/repos/'+r.full_name+'/commits?per_page=999&author=ayusharma').then(function(data){
@@ -374,6 +380,11 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 							$rootScope.rootmethod.langset = _.uniq($rootScope.rootmethod.langset, function(a) { return a;});
 						}
 					})
+
+					$http.get('https://api.github.com/user/followers?per_page=200').then(function(data){
+						console.log(data.data.length);
+					$rootScope.rootmethod.follow = data.data.length;
+					});
 
 
 					// function customizer(objValue, srcValue) {
@@ -409,6 +420,9 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		$http.get('https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all').then(function(data){
 					$rootScope.rootmethod.kintoissues = 	data.data.length;
 		});
+
+
+
 
 
 })
