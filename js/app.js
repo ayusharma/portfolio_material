@@ -356,7 +356,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 
 	var req = {
       method: 'GET',
-      url: 'https://api.github.com/user/repos?per_page=200',
+      url: 'https://api.github.com/user/repos?per_page=200&type=owner',
     };
 
 		$http(req).success(function(res) {
