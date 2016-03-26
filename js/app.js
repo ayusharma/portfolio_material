@@ -417,8 +417,21 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 					$rootScope.rootmethod.kintocommits = 	data.data.length;
 		});
 
+		$http.get('https://api.github.com/repos/kinto/kinto-admin/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.kinto_admin_kintocommits = 	data.data.length;
+		});
+
+
+		$http.get('https://api.github.com/repos/biojs-edu/biojs-vis-snipspector/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.biojs_edu_biojs_vis_snipspector = data.data.length;
+		});
+
+		$http.get('https://api.github.com/repos/biojs/edu/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.biojs_edu = data.data.length;
+		});
+
 		$http.get('https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all').then(function(data){
-					$rootScope.rootmethod.kintoissues = 	data.data.length;
+					$rootScope.rootmethod.kintoissues = data.data.length;
 		});
 
 
