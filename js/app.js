@@ -112,6 +112,10 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		controller:'KeyBoardCtrl',
 		templateUrl:'templates/projects/keyboard.html'
 	})
+	.when('/projects/diseasetargetviz',{
+		// controller:'ContributionCtrl',
+		templateUrl:'templates/projects/diseasetargetviz.html'
+	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
 		templateUrl:'templates/resume.html'
