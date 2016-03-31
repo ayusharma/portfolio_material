@@ -113,8 +113,12 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		templateUrl:'templates/projects/keyboard.html'
 	})
 	.when('/projects/diseasetargetviz',{
-		// controller:'ContributionCtrl',
+		controller:'DiseaseTargetvizCtrl',
 		templateUrl:'templates/projects/diseasetargetviz.html'
+	})
+	.when('/projects/rsscrawler',{
+		controller:'RssCrawlerCtrl',
+		templateUrl:'templates/projects/rsscrawler.html'
 	})
 	.when('/resume',{
 		//controller:'HomeCtrl',
@@ -219,6 +223,14 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	$('.tooltipped').tooltip({delay: 50});
 })
 .controller('BloodcollectiveCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('DiseaseTargetvizCtrl',function(){
+	$('.materialboxed').materialbox();
+	$('.tooltipped').tooltip({delay: 50});
+})
+.controller('RssCrawlerCtrl',function(){
 	$('.materialboxed').materialbox();
 	$('.tooltipped').tooltip({delay: 50});
 })
