@@ -58,7 +58,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	})
 	.when('/projects/wordmatch',{
 		controller:'WordmatchCtrl',
-		templateUrl:'templates/projects/Wordmatch.html'
+		templateUrl:'templates/projects/wordmatch.html'
 	})
 	.when('/projects/bloodcollective',{
 		controller:'BloodcollectiveCtrl',
