@@ -431,7 +431,9 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 
 		$http.get('https://api.github.com/repos/kinto/kinto/commits?author=ayusharma').then(function(data){
 					$rootScope.rootmethod.kintocommits = 	data.data.length;
+
 		});
+
 
 		$http.get('https://api.github.com/repos/kinto/kinto-admin/commits?author=ayusharma').then(function(data){
 					$rootScope.rootmethod.kinto_admin_kintocommits = 	data.data.length;
@@ -446,9 +448,49 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 					$rootScope.rootmethod.biojs_edu = data.data.length;
 		});
 
-		$http.get('https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all').then(function(data){
-					$rootScope.rootmethod.kintoissues = data.data.length;
+		$http.get('https://api.github.com/repos/biojs/biojs.net2/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.biojs_net2 = data.data.length;
 		});
+
+		$http.get('https://api.github.com/repos/biojs/registry-ui/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.biojs_registry_ui = data.data.length;
+		});
+
+		$http.get('https://api.github.com/repos/biojs/slush-biojs/commits?author=ayusharma').then(function(data){
+					$rootScope.rootmethod.biojs_slush_biojs = data.data.length;
+		});
+
+
+		$http.get('https://api.github.com/repos/biojs/biojs.net2/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.biojs_net2_issues = data.data;
+
+		});
+
+		$http.get('https://api.github.com/repos/kinto/kinto/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.kintoissues = data.data;
+					// console.log(data.data)
+		});
+
+		$http.get('https://api.github.com/repos/kinto/kinto-admin/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.kinto_admin_kintoissues = data.data;
+		});
+
+		$http.get('https://api.github.com/repos/biojs-edu/biojs-vis-snipspector/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.biojs_vis_snipspector_issues =	data.data;
+		});
+		$http.get('https://api.github.com/repos/biojs/edu/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.biojs_edu_issues =	data.data;
+
+		});
+		$http.get('https://api.github.com/repos/biojs/registry-ui/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.biojs_registry_ui_issues =	data.data;
+
+		});
+		$http.get('https://api.github.com/repos/biojs/slush-biojs/issues?creator=ayusharma&state=all').then(function(data){
+					$rootScope.rootmethod.biojs_slush_biojs_issues =	data.data;
+					console.log(data.data)
+		});
+
 
 
 
