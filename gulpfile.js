@@ -7,6 +7,13 @@ var gulp = require('gulp'),
 	port = process.env.port || 8000;
 
 var webserver = require('gulp-webserver');
+var ignore = require('gulp-ignore');
+
+var concat = require('gulp-concat');
+var filter = require('gulp-filter');
+var del = require('del');
+var gulpSequence = require('gulp-sequence');
+var vinylPaths = require('vinyl-paths');
 
 
 //
@@ -15,6 +22,29 @@ var webserver = require('gulp-webserver');
 //         .pipe(browserify())
 //         .pipe(gulp.dest('./app/dist/js'));
 // });
+
+var mainBowerFiles = require('gulp-main-bower-files');
+var uglify = require('gulp-uglify');
+
+var bowerBuild = function(){
+	return gulp.src('./bower.json')
+			.pipe(mainBowerFiles())
+			.pipe(filter('**/*.js'))
+			.pipe(concat('vendor.js'))
+			.pipe(uglify())
+			.pipe(gulp.dest('./dist/js'))
+}
+
+
+gulp.task('delete', function(){
+    return gulp.src('./dist')
+    .pipe(vinylPaths(del));
+});
+
+
+gulp.task('uglify', function(){
+    return bowerBuild();
+});
 
 
 
@@ -52,3 +82,4 @@ gulp.task('watch',function(){
 
 
 gulp.task('serve',['watch','webserver'])
+gulp.task('build',gulpSequence('delete','uglify'))

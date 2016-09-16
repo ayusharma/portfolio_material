@@ -23,11 +23,22 @@
   },
   "homepage": "https://github.com/ayusharma/portfilio_material#readme",
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "^2.6.0",
-    "gulp-connect": "^3.0.0",
-    "gulp-webserver": "^0.9.1"
+    "gulp-connect": "^5.0.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-main-bower-files": "^1.5.3",
+    "gulp-sequence": "^0.4.6",
+    "gulp-uglify": "^2.0.0",
+    "gulp-webserver": "^0.9.1",
+    "main-bower-files": "^2.13.1",
+    "vinyl-paths": "^2.1.0"
+  },
+  "dependencies": {
+    "gulp-ignore": "^2.0.1",
+    "ng-annotate": "^1.2.1"
   }
 }

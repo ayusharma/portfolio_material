@@ -1,0 +1,32 @@
+{
+  "name": "portfilio_material",
+  "description": "http://ayusharma.in",
+  "main": "index.js",
+  "authors": [
+    "Ayush Sharma"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "portfolio",
+    "ayusharma",
+    "ayushsharma",
+    "ayush"
+  ],
+  "homepage": "https://github.com/ayusharma/portfolio_material",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "less": "^2.7.1",
+    "angular-sanitize": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "lodash": "^4.15.0",
+    "angular-animate": "^1.5.8",
+    "materialize": "^0.97.7"
+  }
+}
