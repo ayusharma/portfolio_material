@@ -1,0 +1,16 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "semi": "error"
+  },
+  "globals": {
+    "_": true,
+    "angular": true,
+    "moment": true,
+    "ng": true,
+    "require": true
+  }
+}
