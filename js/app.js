@@ -11,6 +11,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		templateUrl:'templates/explore.html'
 	})
 	.when('/writing',{
+		controller: 'WritingController',
 		templateUrl:'templates/writing.html'
 	})
 	.when('/projects',{
@@ -27,14 +28,17 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	})
 })
 
-.controller('CollapsibleCtrl',function($scope){
-   $(document).ready(function(){
-   $('.collapsible').collapsible({
-           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-   });
-   $('.materialboxed').materialbox();
-   $('.tooltipped').tooltip({delay: 50});
-   });
+.controller('WritingController',function($scope, $http){
+	var url = 'http://morning-earth-19323.herokuapp.com/?feedURL=https://medium.com/feed/@ayusharma.in';
+	$scope.writing = {};
+	$http({
+	  method: 'GET',
+	  url: url
+	}).then(function successCallback(response) {
+	     $scope.writing.data = response.data;
+	  }, function errorCallback(error) {
+	    console.log(erroe)
+	});
 })
 
 
