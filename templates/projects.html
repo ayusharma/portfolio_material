@@ -1,9 +1,20 @@
 <div class="col s12 m8 offset-m2 l6 offset-l3">
-	<div class="card-panel white z-depth-1">
-		<h5> <i class="small material-icons" style="vertical-align:text-top;">label_outline</i> Projects</h5>
-		<hr/>
-		<br/>
-		<h5>Under graduation</h5>
-		<br/>
+	<div class="row">
+		<div class="col l12 m12 s12">
+		    <p class="flow-text center-align">
+					<i>"A student asked ‘The programmers of old used only simple machines and no programming languages, yet they made beautiful programs. Why do we use complicated machines and programming languages?’. Fu-Tzu replied ‘The builders of old used only sticks and clay, yet they made beautiful huts.’ - Master Yuan-Ma, The Book of Programming"</i>
+				</p>
+		</div>
+		<div class="col l12 m12 s12" ng-repeat="post in writing.data.items">
+			<div class="section">
+				<p class="flow-text">
+					{{ post.created | date:'mediumDate'}}
+				</p>
+				<h6>
+					<a href="{{post.link}}">{{ post.title }}</a>
+				</h6>
+			</div>
+			<div class="divider"></div>
+		</div>
 	</div>
 </div>
