@@ -1,18 +1,18 @@
 <div class="col s12 m8 offset-m2 l6 offset-l3">
 	<div class="row">
 		<div class="col l12 m12 s12">
-		    <p class="flow-text center-align">
-					<i>"A student asked ‘The programmers of old used only simple machines and no programming languages, yet they made beautiful programs. Why do we use complicated machines and programming languages?’. Fu-Tzu replied ‘The builders of old used only sticks and clay, yet they made beautiful huts.’ - Master Yuan-Ma, The Book of Programming"</i>
-				</p>
+	    <p class="flow-text center-align">
+				<i>"A student asked ‘The programmers of old used only simple machines and no programming languages, yet they made beautiful programs. Why do we use complicated machines and programming languages?’. Fu-Tzu replied ‘The builders of old used only sticks and clay, yet they made beautiful huts.’"  - Master Yuan-Ma,</i>
+			</p>
 		</div>
-		<div class="col l12 m12 s12" ng-repeat="post in writing.data.items">
+		<div class="col l12 m12 s12" ng-repeat="project in projects.data.feed.entry" ng-if="project.gsx$active['$t'] === 'TRUE'">
 			<div class="section">
-				<p class="flow-text">
-					{{ post.created | date:'mediumDate'}}
-				</p>
 				<h6>
-					<a href="{{post.link}}">{{ post.title }}</a>
+					<a href="{{project.gsx$githuburl['$t']}}" target="_blank">{{ project.gsx$projectname['$t'] }}</a>
 				</h6>
+				<span class="flow-text text-small">
+					{{ project.gsx$description['$t'] }}
+				</span>
 			</div>
 			<div class="divider"></div>
 		</div>

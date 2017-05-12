@@ -15,6 +15,7 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		templateUrl:'templates/writing.html'
 	})
 	.when('/projects',{
+		controller: 'ProjectsController',
 		templateUrl:'templates/projects.html'
 	})
 	.when('/resume',{
@@ -37,7 +38,20 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	}).then(function successCallback(response) {
 	     $scope.writing.data = response.data;
 	  }, function errorCallback(error) {
-	    console.log(erroe)
+	    console.log(error)
+	});
+})
+
+.controller('ProjectsController', function ($scope, $http) {
+	var url = 'https://spreadsheets.google.com/feeds/list/1jYueR8BrT3qvvYCh7_tbH9wBXr-CbNzXiV_dZSAXpGQ/od6/public/values?alt=json';
+	$scope.projects = {};
+	$http({
+	  method: 'GET',
+	  url: url
+	}).then(function successCallback(response) {
+	     $scope.projects.data = response.data;
+	  }, function errorCallback(error) {
+	    console.log(error)
 	});
 })
 
