@@ -1,18 +1,10 @@
-<nav class="margin-bottom-5x">
+<nav class="margin-bottom-5x hide-for-print">
   <div class="nav-wrapper">
-    <!-- <a href="" class="brand-logo"><b>A<span class="name">YUSH</span>&nbsp;<span class="name">SHARMA</span></b></a> -->
-
-    <ul class="right hide-on-med-and-down nav-links">
-      <li><a class="waves-effect waves-light" href="#/">Intro</a></li>
-      <li><a class="waves-effect waves-light" href="#/writing">Writing</a></li>
-      <li><a class="waves-effect waves-light" href="#/projects">Projects</a></li>
-      <!-- <li><a class="waves-effect waves-light" href="#/milestone">Objective</a></li> -->
-      <li><a class="waves-effect waves-light" href="#/resume">Resume</a></li>
-      <!-- <li><a  class="waves-effect waves-light" href="#/contribution">Contribution</a></li> -->
-      <!-- <li><a  class="waves-effect waves-light" href="#/explore">Gallery</a></li> -->
-      <!-- <li><a  class="waves-effect waves-light" href="#/blog">Blog</a></li> -->
-      <!-- <li><a  class="waves-effect waves-light" href="#/contact">Contact</a></li> -->
+    <ul class="right nav-links">
+      <li><a class="waves-effect waves-light" ng-class="{'view-path': path === '/'}" href="#/">Intro</a></li>
+      <li><a class="waves-effect waves-light" ng-class="{'view-path': path === '/writing'}" href="#/writing">Writing</a></li>
+      <li><a class="waves-effect waves-light" ng-class="{'view-path': path === '/projects'}" href="#/projects">Projects</a></li>
+      <li><a class="waves-effect waves-light" ng-class="{'view-path': path === '/resume'}" href="#/resume">Resume</a></li>
     </ul>
-    <a data-ng-click="slideIt()" data-activates="slide-out" class="button-collapse" style="cursor:pointer;"> <i class="material-icons">view_headline</i></a>
   </div>
 </nav>

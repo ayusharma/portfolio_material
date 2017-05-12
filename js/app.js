@@ -19,13 +19,8 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		templateUrl:'templates/projects.html'
 	})
 	.when('/resume',{
+		controller: 'ResumeController',
 		templateUrl:'templates/resume.html'
-	})
-	.when('/milestone',{
-		templateUrl:'templates/milestones.html'
-	})
-	.when('/contact',{
-		templateUrl:'templates/contact.html'
 	})
 })
 
@@ -55,6 +50,16 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	});
 })
 
+.controller('ResumeController', function ($scope) {
+	$scope.printAction = function (e) {
+		var evt = window.event ? event : e
+		if(evt.ctrlKey && evt.keyCode == 80){
+			var frm = document.getElementById("toPrint").contentWindow;
+      frm.focus();// focus on contentWindow is needed on some ie versions
+      frm.print();
+    }
+	};
+})
 
 //directives
 .directive('header', [function(){
@@ -78,14 +83,6 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	return directive;
 }])
 
-.directive('links', [function(){
-	var directive = {
-		restrict: 'EA',
-		templateUrl: 'templates/directive/links.html'
-	}
-	return directive;
-}])
-
 .directive('loading', ['$http',function($http){
 	var directive = {
 		restrict: 'EA',
@@ -104,4 +101,9 @@ angular.module('ayush',['ngRoute','ngSanitize'])
     }
 	}
 	return directive;
-}]);
+}])
+.run(function ($rootScope, $location) {
+	$rootScope.$on('$locationChangeSuccess', function () {
+		$rootScope.path = $location.path();
+	});
+})
