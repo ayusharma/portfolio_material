@@ -50,15 +50,51 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	});
 })
 
-.controller('ResumeController', function ($scope) {
-	$scope.printAction = function (e) {
-		var evt = window.event ? event : e
-		if(evt.ctrlKey && evt.keyCode == 80){
-			var frm = document.getElementById("toPrint").contentWindow;
-      frm.focus();// focus on contentWindow is needed on some ie versions
-      frm.print();
-    }
-	};
+.controller('ResumeController', function ($scope, loader) {
+	// If absolute URL from the remote server is provided, configure the CORS
+	// header on that server.
+	loader.turnOn();
+	var url = 'https://docs.google.com/document/d/1S8OKfwODNMx--Rj2yevQ1hXnON4hc2qTCdw4JNZPfh4/export?format=pdf';
+
+	// Disable workers to avoid yet another cross-origin issue (workers need
+	// the URL of the script to be loaded, and dynamically loading a cross-origin
+	// script does not work).
+	// PDFJS.disableWorker = true;
+
+	// The workerSrc property shall be specified.
+	PDFJS.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
+
+	// Asynchronous download of PDF
+	var loadingTask = PDFJS.getDocument(url);
+	loadingTask.promise.then(function(pdf) {
+	  // Fetch the first page
+	  var pageNumber = 1;
+	  pdf.getPage(pageNumber).then(function(page) {
+
+	    var scale = 1.5;
+	    var viewport = page.getViewport(scale);
+
+	    // Prepare canvas using PDF page dimensions
+	    var canvas = document.getElementById('the-resume');
+	    var context = canvas.getContext('2d');
+	    canvas.height = viewport.height;
+	    canvas.width = viewport.width;
+
+	    // Render PDF page into canvas context
+	    var renderContext = {
+	      canvasContext: context,
+	      viewport: viewport
+	    };
+	    var renderTask = page.render(renderContext);
+	    renderTask.then(function () {
+	      console.log('Page rendered');
+				loader.turnOff();
+	    });
+	  });
+	}, function (reason) {
+	  // PDF loading error
+	  console.error(reason);
+	});
 })
 
 //directives
@@ -83,25 +119,49 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 	return directive;
 }])
 
-.directive('loading', ['$http',function($http){
+.directive('loading', ['$http', 'loader', function($http, loader){
 	var directive = {
 		restrict: 'EA',
 		templateUrl: 'templates/directive/loading.html',
 		link: function (scope, elm, attrs) {
-        scope.isLoading = function () {
-            return $http.pendingRequests.length;
-        };
-        scope.$watch(scope.isLoading, function (v) {
-          if(v){
-              elm.show();
-          }else{
-              elm.hide();
-          }
-      });
+
+			loader.setLoader(elm);
+
+      scope.isLoading = function () {
+          return $http.pendingRequests.length;
+      };
+      scope.$watch(scope.isLoading, function (v) {
+        if(v){
+            elm.show();
+        }else{
+            elm.hide();
+        }
+    	});
     }
 	}
 	return directive;
 }])
+
+.factory('loader', function () {
+	var elmement;
+
+	var setLoader = function (elm) {
+		elmement = elm;
+	}
+	var turnOn = function () {
+		elmement.show();
+	};
+
+	var turnOff = function () {
+		elmement.hide();
+	};
+
+	return {
+		setLoader: setLoader,
+		turnOn: turnOn,
+		turnOff: turnOff
+	};
+})
 .run(function ($rootScope, $location) {
 	$rootScope.$on('$locationChangeSuccess', function () {
 		$rootScope.path = $location.path();
