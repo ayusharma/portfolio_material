@@ -9,7 +9,7 @@
 		<div class="col l12 m12 s12" ng-repeat="project in projects.data.feed.entry" ng-if="project.gsx$active['$t'] === 'TRUE'">
 			<div class="section">
 				<h6>
-					<a href="{{project.gsx$githuburl['$t']}}" target="_blank">{{ project.gsx$projectname['$t'] }}</a>
+					<a href="{{project.gsx$githuburl['$t']}}" class="text-dark text-big" target="_blank">{{ project.gsx$projectname['$t'] }}</a>
 				</h6>
 				<span class="flow-text text-small">
 					{{ project.gsx$description['$t'] }}

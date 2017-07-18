@@ -18,21 +18,24 @@ angular.module('ayush',['ngRoute','ngSanitize'])
 		controller: 'ProjectsController',
 		templateUrl:'templates/projects.html'
 	})
-	.when('/resume',{
-		controller: 'ResumeController',
-		templateUrl:'templates/resume.html'
+	.when('/slides',{
+		templateUrl:'templates/slides.html'
 	})
+	// .when('/resume',{
+	// 	controller: 'ResumeController',
+	// 	templateUrl:'templates/resume.html'
+	// })
 })
 
 .controller('WritingController',function($scope, $http){
-	var url = 'http://morning-earth-19323.herokuapp.com/?feedURL=https://medium.com/feed/@ayusharma.in';
-	$scope.writing = {};
+	var url = 'https://spreadsheets.google.com/feeds/list/1riSGhWVpyZ9PIlWoFkfZps6euKVurgTOs0tYRwOeQto/od6/public/values?alt=json';
+	$scope.writings = {};
 	$scope.loading = true;
 	$http({
 	  method: 'GET',
 	  url: url
 	}).then(function successCallback(response) {
-	     $scope.writing.data = response.data;
+	     $scope.writings.data = response.data;
 			 $scope.loading = false;
 	  }, function errorCallback(error) {
 	    console.log(error)
